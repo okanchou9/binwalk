@@ -55,10 +55,10 @@ fi
 if [ ! -f "cramfsprogs_1.1-6ubuntu1_amd64.deb" ]; then
     wget http://launchpadlibrarian.net/251826685/cramfsprogs_1.1-6ubuntu1_amd64.deb
 fi
-sudo dpkg -i cramfsprogs_1.1-6ubuntu1_amd64.deb
+dpkg -i cramfsprogs_1.1-6ubuntu1_amd64.deb
 
 #PYTHON2_APT_CANDIDATES="python-crypto python-lzo python-lzma python-pip python-tk"
-PYTHON3_APT_CANDIDATES="python3-crypto python3-pip python3-tk"
+PYTHON3_APT_CANDIDATES="python3-pip python3-tk"
 PYTHON3_YUM_CANDIDATES=""
 YUM_CANDIDATES="git gcc gcc-c++ make openssl-devel qtwebkit-devel qt-devel gzip bzip2 tar arj p7zip p7zip-plugins cabextract squashfs-tools zlib zlib-devel lzo lzo-devel xz xz-compat-libs xz-libs xz-devel xz-lzma-compat python-backports-lzma lzip pyliblzma perl-Compress-Raw-Lzma lzop srecord"
 #PYTHON2_YUM_CANDIDATES="python-pip python-Bottleneck cpio"
@@ -71,8 +71,8 @@ if [ $UID -eq 0 ]
 then
     SUDO=""
 else
-    SUDO="sudo"
-    REQUIRED_UTILS="sudo $REQUIRED_UTILS"
+    SUDO=""
+    REQUIRED_UTILS="$REQUIRED_UTILS"
 fi
 
 function install_yaffshiv
@@ -134,7 +134,7 @@ function install_cramfstools
 function install_ubireader
 {
     export PYTHONUSERBASE=/usr/local
-    sudo pip install ubi_reader -i https://pypi.doubanio.com/simple/
+    pip install ubi_reader -i https://pypi.doubanio.com/simple/
 }
 
 function install_pip_package
